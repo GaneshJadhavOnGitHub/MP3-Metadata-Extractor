@@ -30,7 +30,7 @@ To save output to a file execute following command.
 
 --------------------
 
-__Project Tree Structure__
+__Project Dependency Tree__
 
 ```
 
