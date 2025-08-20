@@ -29,3 +29,36 @@ To save output to a file execute following command.
 
 
 --------------------
+
+__Project Tree Structure__
+
+```
+
+mp3_metadata_extractor v0.1.0 () - 
+`-- mp3-metadata feature "default"
+    `-- mp3-metadata v0.3.4 (https://github.com/GuillaumeGomez/mp3-metadata) - 
+
+```
+
+__Repository Tree Structure__
+
+```
+├── .github
+    └── workflows
+    │   └── rust.yml
+├── Application_Requirements.txt
+├── LICENSE
+├── OUTPUT
+    ├── Output1.png
+    └── Output2.png
+├── README.md
+└── mp3_metadata_extractor
+    ├── .gitignore
+    ├── Cargo.lock
+    ├── Cargo.toml
+    ├── Sample.mp3
+    ├── Sample.txt
+    └── src
+        └── main.rs
+
+```
