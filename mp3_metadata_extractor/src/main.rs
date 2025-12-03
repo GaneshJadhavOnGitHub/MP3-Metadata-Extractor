@@ -55,6 +55,7 @@ fn print_first_frame(mp3_meta_data: &MP3Metadata){
 }
 
 
+/* 
 /// Prints Optional Information in MP3 file. 
 fn print_optional_information(mp3_meta_data: &MP3Metadata){
     
@@ -65,6 +66,7 @@ fn print_optional_information(mp3_meta_data: &MP3Metadata){
             println!("Position:                                 {}", optional_audio_tags.position);
             println!("Major Version:                            {}", optional_audio_tags.major_version);
             println!("Minor Version:                            {}", optional_audio_tags.minor_version);
+            // Inner if starts
             if optional_audio_tags.album_movie_show.is_some(){
             println!("Album Movie Show:                         {}", optional_audio_tags.album_movie_show.to_owned().unwrap());
             }
@@ -362,7 +364,7 @@ fn print_optional_information(mp3_meta_data: &MP3Metadata){
         }
         else{
             println!("Publishers Official Webpage:              {}", NOT_AVAILABLE);  
-        }
+        } // End of inner if
     
     
       } // End of For
@@ -373,6 +375,273 @@ fn print_optional_information(mp3_meta_data: &MP3Metadata){
         println!("\n\nOptional Informaion is Not Available.")
     }
     
+}
+*/
+
+/// Prints Optional Information in MP3 file.
+fn print_optional_information(mp3_meta_data: &MP3Metadata) {
+    if !mp3_meta_data.optional_info.is_empty() {
+        println!("\n========== OPTIONAL INFORMATION ==========");
+        for optional_audio_tags in mp3_meta_data.optional_info[0..1].iter() {
+            println!("Position:                                 {}", optional_audio_tags.position);
+            println!("Major Version:                            {}", optional_audio_tags.major_version);
+            println!("Minor Version:                            {}", optional_audio_tags.minor_version);
+
+
+            match &optional_audio_tags.album_movie_show {
+                Some(v) => println!("Album Movie Show:                         {}", v),
+                None    => println!("Album Movie Show:                         {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.bpm {
+                Some(v) => println!("Beats Per Minute:                         {}", v),
+                None    => println!("Beats Per Minute:                         {}", NOT_AVAILABLE),
+            }
+
+            match optional_audio_tags.composers.is_empty() {
+                false => for composer in &optional_audio_tags.composers {
+                    println!("Composer:                                 {}", composer);
+                },
+                true  => println!("Composer:                                 {}", NOT_AVAILABLE),
+            }
+
+            match optional_audio_tags.content_type.is_empty() {
+                false => for genre in &optional_audio_tags.content_type {
+                    println!("Genre:                                    {:?}", genre);
+                },
+                true  => println!("Genre:                                    {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.copyright {
+                Some(v) => println!("Copyright:                                {}", v),
+                None    => println!("Copyright:                                {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.date {
+                Some(v) => println!("Date:                                     {}", v),
+                None    => println!("Date:                                     {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.playlist_delay {
+                Some(v) => println!("Playlist Delay:                           {}", v),
+                None    => println!("Playlist Delay:                           {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.encoded_by {
+                Some(v) => println!("Encoded By:                               {}", v),
+                None    => println!("Encoded By:                               {}", NOT_AVAILABLE),
+            }
+
+            match optional_audio_tags.text_writers.is_empty() {
+                false => for text_writers in &optional_audio_tags.text_writers {
+                    println!("Text Writers:                             {}", text_writers);
+                },
+                true  => println!("Text Writers:                             {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.file_type {
+                Some(v) => println!("File Type:                                {}", v),
+                None    => println!("File Type:                                {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.time {
+                Some(v) => println!("Time:                                     {}", v),
+                None    => println!("Time:                                     {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.content_group_description {
+                Some(v) => println!("Content Group Description:                {}", v),
+                None    => println!("Content Group Description:                {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.subtitle_refinement_description {
+                Some(v) => println!("Subtitle Refinement Description:          {}", v),
+                None    => println!("Subtitle Refinement Description:          {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.title {
+                Some(v) => println!("Title:                                    {}", v),
+                None    => println!("Title:                                    {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.initial_key {
+                Some(v) => println!("Initial Key:                              {}", v),
+                None    => println!("Initial Key:                              {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.language {
+                Some(v) => println!("Language:                                 {}", v),
+                None    => println!("Language:                                 {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.length {
+                Some(v) => println!("Length:                                   {}", v),
+                None    => println!("Length:                                   {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.media_type {
+                Some(v) => println!("Media Type:                               {}", v),
+                None    => println!("Media Type:                               {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.original_album_move_show_title {
+                Some(v) => println!("Original Album Movie Show Title:          {}", v),
+                None    => println!("Original Album Movie Show Title:          {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.original_filename {
+                Some(v) => println!("Original Filename:                        {}", v),
+                None    => println!("Original Filename:                        {}", NOT_AVAILABLE),
+            }
+
+            match optional_audio_tags.original_text_writers.is_empty() {
+                false => for original_text_writers in &optional_audio_tags.original_text_writers {
+                    println!("Original Text Writers:                    {}", original_text_writers);
+                },
+                true  => println!("Original Text Writers:                    {}", NOT_AVAILABLE),
+            }
+
+            match optional_audio_tags.original_artists.is_empty() {
+                false => for original_artists in &optional_audio_tags.original_artists {
+                    println!("Original Artists:                         {}", original_artists);
+                },
+                true  => println!("Original Artists:                         {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.original_release_year {
+                Some(v) => println!("Original Release Year:                    {}", v),
+                None    => println!("Original Release Year:                    {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.file_owner {
+                Some(v) => println!("File Owner:                               {}", v),
+                None    => println!("File Owner:                               {}", NOT_AVAILABLE),
+            }
+
+            match optional_audio_tags.performers.is_empty() {
+                false => for performers in &optional_audio_tags.performers {
+                    println!("Performers:                               {}", performers);
+                },
+                true  => println!("Performers:                               {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.band {
+                Some(v) => println!("Band:                                     {}", v),
+                None    => println!("Band:                                     {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.conductor {
+                Some(v) => println!("Conductor:                                {}", v),
+                None    => println!("Conductor:                                {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.interpreted {
+                Some(v) => println!("Interpreted:                              {}", v),
+                None    => println!("Interpreted:                              {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.part_of_a_set {
+                Some(v) => println!("Part Of A Set:                            {}", v),
+                None    => println!("Part Of A Set:                            {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.publisher {
+                Some(v) => println!("Publisher:                                {}", v),
+                None    => println!("Publisher:                                {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.track_number {
+                Some(v) => println!("Track Number:                             {}", v),
+                None    => println!("Track Number:                             {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.recording_dates {
+                Some(v) => println!("Recording Dates:                          {}", v),
+                None    => println!("Recording Dates:                          {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.internet_radio_station_name {
+                Some(v) => println!("Internet Radio Station Name:              {}", v),
+                None    => println!("Internet Radio Station Name:              {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.internet_radio_station_owner {
+                Some(v) => println!("Internet Radio Station Owner:             {}", v),
+                None    => println!("Internet Radio Station Owner:             {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.size {
+                Some(v) => println!("Size:                                     {}", v),
+                None    => println!("Size:                                     {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.international_standard_recording_code {
+                Some(v) => println!("International Standard Recording Code:    {}", v),
+                None    => println!("International Standard Recording Code:    {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.soft_hard_setting {
+                Some(v) => println!("Soft Hard Setting:                        {}", v),
+                None    => println!("Soft Hard Setting:                        {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.year {
+                Some(v) => println!("Year:                                     {}", v),
+                None    => println!("Year:                                     {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.involved_people {
+                Some(v) => println!("Involved People:                          {}", v),
+                None    => println!("Involved People:                          {}", NOT_AVAILABLE),
+            }
+
+            match optional_audio_tags.commercial_info_url.is_empty() {
+                false => for commercial_info_url in &optional_audio_tags.commercial_info_url {
+                    println!("Commercial Info URL:                      {:?}", commercial_info_url);
+                },
+                true  => println!("Commercial Info URL:                      {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.copyright_info_url {
+                Some(v) => println!("Copyright Info URL:                       {:?}", v),
+                None    => println!("Copyright Info URL:                       {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.official_webpage {
+                Some(v) => println!("Official Webpage:                         {:?}", v),
+                None    => println!("Official Webpage:                         {}", NOT_AVAILABLE),
+            }
+
+            match optional_audio_tags.official_artist_webpage.is_empty() {
+                false => for official_artist_webpage in &optional_audio_tags.official_artist_webpage {
+                    println!("Official Artist Webpage:                  {:?}", official_artist_webpage);
+                },
+                true  => println!("Official Artist Webpage:                  {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.official_audio_source_webpage {
+                Some(v) => println!("Official Audio Source Webpage:            {:?}", v),
+                None    => println!("Official Audio Source Webpage:            {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.official_internet_radio_webpage {
+                Some(v) => println!("Official Internet Radio Webpage:          {:?}", v),
+                None    => println!("Official Internet Radio Webpage:          {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.payment_url {
+                Some(v) => println!("Payment URL:                              {:?}", v),
+                None    => println!("Payment URL:                              {}", NOT_AVAILABLE),
+            }
+
+            match &optional_audio_tags.publishers_official_webpage {
+                Some(v) => println!("Publishers Official Webpage:              {:?}", v),
+                None    => println!("Publishers Official Webpage:              {}", NOT_AVAILABLE),
+            }
+        }
+    } else {
+        println!("\n\nOptional Information is Not Available.");
+    }
 }
 
 fn main() {
