@@ -8,11 +8,12 @@ How to run program.
 1. Clone the repository.
 2. navigate inside folder 'mp3_metadata_extractor'
 3. cargo build
-4. cargo run Sample.mp3
+4. cargo run Ae_Ajnabi_Tu_Bhi_Kahin_Awaz_De.mp3
 
 To save output to a file execute following command.
  
- cargo run Sample.mp3 > Sample.txt
+  % cargo run -- Ae_Ajnabi_Tu_Bhi_Kahin_Awaz_De.mp3 > Output.txt
+
  
  ------------------
  
@@ -43,22 +44,28 @@ mp3_metadata_extractor v0.1.0 () -
 __Repository Tree Structure__
 
 ```
-├── .github
-    └── workflows
-    │   └── rust.yml
+ % tree -I '.git' -a 
+.
 ├── Application_Requirements.txt
+├── .github
+│   └── workflows
+│       └── rust.yml
 ├── LICENSE
+├── mp3_metadata_extractor
+│   ├── Ae_Ajnabi_Tu_Bhi_Kahin_Awaz_De.mp3
+│   ├── Cargo.lock
+│   ├── Cargo.toml
+│   ├── .gitignore
+│   ├── Output.txt
+│   └── src
+│       └── main.rs
 ├── OUTPUT
-    ├── Output1.png
-    └── Output2.png
-├── README.md
-└── mp3_metadata_extractor
-    ├── .gitignore
-    ├── Cargo.lock
-    ├── Cargo.toml
-    ├── Sample.mp3
-    ├── Sample.txt
-    └── src
-        └── main.rs
+│   ├── Output1.png
+│   ├── Output2.png
+│   └── Output3.png
+└── README.md
+
+5 directories, 13 files
+
 
 ```
